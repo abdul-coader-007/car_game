@@ -36,8 +36,8 @@ public class CarController : MonoBehaviour
         Brakes();
     }
     void MotorForce (){
-        RRWcollider.motorTorque = Force * VercticalMove;
-        RLWcollider.motorTorque = Force * VercticalMove;
+        FRWcollider.motorTorque = Force * VercticalMove;
+        FLWcollider.motorTorque = Force * VercticalMove;
     }
     void updateWheel (){
         rotateWheel(FRWcollider , FRWTransform);
@@ -62,12 +62,11 @@ public class CarController : MonoBehaviour
         FRWcollider.steerAngle = steeringAngle * HorizontalMove;
         FLWcollider.steerAngle = steeringAngle * HorizontalMove;
 
-        
     }
 
     void PowerSteering() {
         if(HorizontalMove == 0){
-            transform.rotation = Quaternion.Slerp(transform.rotation , Quaternion.Euler(0,0,0) , Time.deltaTime );
+            transform.rotation = Quaternion.Slerp(transform.rotation , Quaternion.Euler(0,0,0) , Time.deltaTime  );
         }
     }
     void Brakes(){
