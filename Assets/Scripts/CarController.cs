@@ -66,11 +66,13 @@ public class CarController : MonoBehaviour
 
     void PowerSteering() {
         if(HorizontalMove == 0){
-            transform.rotation = Quaternion.Slerp(transform.rotation , Quaternion.Euler(0,0,0) , Time.deltaTime  );
+            transform.rotation = Quaternion.Slerp(transform.rotation , Quaternion.Euler(0,0,0) , Time.deltaTime);
         }
     }
-    void Brakes(){
-        if (Input.GetKey(KeyCode.Space)||Input.GetKey(KeyCode.DownArrow)||Input.GetKey(KeyCode.S)){
+
+    //function for brakes
+    void Brakes(){ 
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S)){
             FRWcollider.brakeTorque = brakeForce; 
             FLWcollider.brakeTorque = brakeForce; 
             RRWcollider.brakeTorque = brakeForce; 
@@ -82,5 +84,10 @@ public class CarController : MonoBehaviour
             RRWcollider.brakeTorque = 0f; 
             RLWcollider.brakeTorque = 0f;
         } 
+    }
+
+    public int getSpeed(){
+    // Speed = Magnitude of Rigidbody velocity * 3.6 to convert from m/s to km/h
+    return (int) (rigidbodyCar.linearVelocity.magnitude * 3.6f);
     }
 }
