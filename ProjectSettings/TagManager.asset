@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FuelPickup
   - Traffic
+  - PlayerCar
   layers:
   - Default
   - TransparentFX

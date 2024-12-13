@@ -27,6 +27,10 @@ public class TrafficManager : MonoBehaviour
             {
                 Destroy(vehicle);  // Destroy vehicle once it passes the spawn distance
             }
+
+            if(vehicle.transform.position.y < -100){
+                Destroy(vehicle);
+            }
         }
     }
     void SpawnTraffic(){
